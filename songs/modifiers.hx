@@ -38,6 +38,24 @@ function update(elapsed){
             {health += 0.00025 * FlxG.save.data.poisonMult;}
         }
     }
+
+    if (FlxG.save.data.midsongPlaybackRate){
+        if (FlxG.save.data.playbackRate < 3){
+            if(FlxG.keys.justPressed.E){
+                FlxG.save.data.playbackRate += 0.25;
+                inst.pitch = FlxG.save.data.playbackRate;
+                vocals.pitch = FlxG.save.data.playbackRate;
+            }
+        }
+
+        if (FlxG.save.data.playbackRate > 0.25){
+            if(FlxG.keys.justPressed.Q){
+                FlxG.save.data.playbackRate -= 0.25;
+                inst.pitch = FlxG.save.data.playbackRate;
+                vocals.pitch = FlxG.save.data.playbackRate;
+            }
+        }
+    }
 }
 
 function postCreate(){
