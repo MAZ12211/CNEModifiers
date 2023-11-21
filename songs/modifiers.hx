@@ -3,6 +3,7 @@
    If you wish to add this to your mod, you have full permission to do so as long as you credit me.
 */ 
 
+
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxColor;
 
@@ -10,7 +11,6 @@ var botplayTxt:FlxText;
 
 var startDrain:Bool == false;
 var startPoison:Bool == false;
-var stopPoison:Bool == false;
 
 var poisonAmount:Float = 0.75;
 
@@ -66,9 +66,9 @@ function postUpdate(){
     if (startDrain){
         if (FlxG.save.data.healthDrain){
             if (!PlayState.opponentMode){
-                if (health > 0.1) {health -= 0.000125 + FlxG.save.data.healthDrainMult;}
+                if (health > 0.1) {health -= 0.000125 * FlxG.save.data.healthDrainMult;}
             }else{
-                if (health > 0.1) {health += 0.000125 + FlxG.save.data.healthDrainMult;}
+                if (health > 0.1) {health += 0.000125 * FlxG.save.data.healthDrainMult;}
             }
         }
     }
