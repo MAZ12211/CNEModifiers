@@ -7,7 +7,7 @@
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxColor;
 
-var botplayTxt:FlxText;
+var botplayTxt, playbackRateTxt:FlxText;
 
 var startDrain:Bool == false;
 var startPoison:Bool == false;
@@ -15,16 +15,25 @@ var startPoison:Bool == false;
 var poisonAmount:Float = 0.75;
 
 function create(){
-    botplayTxt = new FlxText(400, 83, FlxG.width - 800, "Botplay", 40);
+    botplayTxt = new FunkinText(400, 83, FlxG.width - 800, "Botplay", 40);
     botplayTxt.setFormat(Paths.font("vcr.ttf"), 40, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     botplayTxt.scrollFactor.set();
     botplayTxt.borderSize = 1.25;
     botplayTxt.alpha = 0;
     botplayTxt.cameras = [camHUD];
     if (FlxG.save.data.botplay) add(botplayTxt);
+
+    playbackRateTxt = new FunkinText(400, botplayTxt.y - 25, FlxG.width - 800, "Playback Rate: " + FlxG.save.data.playbackRate, 40);
+    playbackRateTxt.setFormat(Paths.font("vcr.ttf"), 23.5, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+    playbackRateTxt.scrollFactor.set();
+    playbackRateTxt.borderSize = 1.25;
+    playbackRateTxt.alpha = 0;
+    playbackRateTxt.cameras = [camHUD];
+    if (FlxG.save.data.midsongPlaybackRate) add(playbackRateTxt);
 }
 
 function update(elapsed){
+    playbackRateTxt.text = "Playback Rate: " + FlxG.save.data.playbackRate;
     if (FlxG.save.data.botplay) player.cpu = true;
 
     if (FlxG.save.data.noMiss && misses > 0) health -= 2;
@@ -103,4 +112,5 @@ function onSongStart(){
     startDrain = true;
     FlxTween.tween(botplayTxt, {y: 115}, 1, {ease: FlxEase.sineInOut, type: 4}); // type 4 means looping
     FlxTween.tween(botplayTxt, {alpha: 1}, 1);
+    FlxTween.tween(playbackRateTxt, {alpha: 1}, 1);
 }
