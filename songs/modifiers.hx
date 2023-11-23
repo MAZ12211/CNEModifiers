@@ -42,6 +42,11 @@ function update(elapsed){
         camHUD.shake(0.0025 * FlxG.save.data.earthquakeMult, inst.length, null, true);
     }
 
+    if (FlxG.save.data.seasick){
+        camGame.angle += Math.cos(Conductor.songPosition * Conductor.bpm / 100 / 500) * (0.035 * FlxG.save.data.seasickMult);
+        camHUD.angle += Math.cos(Conductor.songPosition * Conductor.bpm / 100 / 500) * (0.035 * FlxG.save.data.seasickMult);
+    }
+
     if (FlxG.save.data.midsongPlaybackRate){
         if (FlxG.save.data.playbackRate < 3){
             if(FlxG.keys.justPressed.E){
