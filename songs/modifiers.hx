@@ -33,9 +33,12 @@ function create(){
 
 function update(elapsed){
     playbackRateTxt.text = "Playback Rate: " + FlxG.save.data.playbackRate;
+
     if (FlxG.save.data.botplay) player.cpu = true;
 
     if (FlxG.save.data.noMiss && misses > 0) health = -0.1;
+
+    if (FlxG.save.data.invisNotes) playerStrums.notes.forEachAlive(function(notes) notes.alpha = 0);
 
     if (FlxG.save.data.earthquake){
         camGame.shake(0.0025 * FlxG.save.data.earthquakeMult, inst.length, null, true);
@@ -53,6 +56,10 @@ function update(elapsed){
                 FlxG.save.data.playbackRate += 0.25;
                 inst.pitch = FlxG.save.data.playbackRate;
                 vocals.pitch = FlxG.save.data.playbackRate;
+                playbackRateTxt.alpha = 1;
+                new FlxTimer().start(2.5, function(tmr:FlxTimer){
+                    FlxTween.tween(playbackRateTxt, {alpha: 0}, 1);
+                });
             }
         }
 
@@ -61,6 +68,10 @@ function update(elapsed){
                 FlxG.save.data.playbackRate -= 0.25;
                 inst.pitch = FlxG.save.data.playbackRate;
                 vocals.pitch = FlxG.save.data.playbackRate;
+                playbackRateTxt.alpha = 1;
+                new FlxTimer().start(2.5, function(tmr:FlxTimer){
+                    FlxTween.tween(playbackRateTxt, {alpha: 0}, 1);
+                });
             }
         }
     }
@@ -121,5 +132,4 @@ function onSongStart(){
     startDrain = true;
     FlxTween.tween(botplayTxt, {y: 115}, 1, {ease: FlxEase.sineInOut, type: 4}); // type 4 means looping
     FlxTween.tween(botplayTxt, {alpha: 1}, 1);
-    FlxTween.tween(playbackRateTxt, {alpha: 1}, 1);
 }
