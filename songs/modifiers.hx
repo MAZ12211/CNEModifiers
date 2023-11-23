@@ -38,7 +38,12 @@ function update(elapsed){
 
     if (FlxG.save.data.noMiss && misses > 0) health = -0.1;
 
-    if (FlxG.save.data.invisNotes) playerStrums.notes.forEachAlive(function(notes) notes.alpha = 0);
+    if (FlxG.save.data.invisNotes){
+        if (!PlayState.opponentMode) playerStrums.notes.forEachAlive(function(notes) notes.alpha = 0);
+        else if (PlayState.opponentMode) cpuStrums.notes.forEachAlive(function(notes) notes.alpha = 0);
+    }
+
+    if (PlayState.coopMode) FlxG.save.data.invisNotes = false;
 
     if (FlxG.save.data.earthquake){
         camGame.shake(0.0025 * FlxG.save.data.earthquakeMult, inst.length, null, true);

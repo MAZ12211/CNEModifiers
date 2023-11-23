@@ -25,7 +25,7 @@
 		<number id="trampolineMult" name="Multiplier" desc="Multiplier for trampoline." min="0.25" max="3" change="0.25"/>
 	</menu>
 	<checkbox id="poison" name="Poison" desc="Enables the poison modifier. Once you miss, you get poisoned for the rest of the song. Missing more will make the poison worse."/>
-	<checkbox id="invisNotes" name="Invisible Player Notes" desc="If checked, the player's notes will be invisible. Better use your memory for this one!"/>
+	<checkbox id="invisNotes" name="Invisible Player Notes" desc="If checked, the player's notes will be invisible. Better use your memory for this one! Note: If playing coop mode, this modifier will automatically be set off!"/>
 	<checkbox id="noMiss" name="Instant Death on Miss" desc="If checked, missing a note will instantly kill you."/>
 	<checkbox id="sicksOnly" name="Sicks Only" desc="If checked, having any rating other than sicks will instantly kill you. Better be careful on hitting your notes!"/>
 	<checkbox id="practice" name="Practice Mode" desc="If checked, you cannot die no matter what."/>
