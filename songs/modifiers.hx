@@ -133,3 +133,15 @@ function onSongStart(){
     FlxTween.tween(botplayTxt, {y: 115}, 1, {ease: FlxEase.sineInOut, type: 4}); // type 4 means looping
     FlxTween.tween(botplayTxt, {alpha: 1}, 1);
 }
+
+function stepHit(){
+    if (FlxG.save.data.trampoline){
+        if (curStep % 4 == 0){
+            FlxTween.tween(camHUD, {y: -15 * FlxG.save.data.trampolineMult}, Conductor.stepCrochet * 0.002, {ease: FlxEase.quadOut});
+            trace("boing"); // feeling silly :3
+        }
+        if (curStep % 4 == 2){
+            FlxTween.tween(camHUD, {y: 0}, Conductor.stepCrochet * 0.002, {ease: FlxEase.sineIn});
+        }
+    }
+}

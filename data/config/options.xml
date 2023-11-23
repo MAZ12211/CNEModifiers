@@ -20,6 +20,10 @@
 		<checkbox id="seasick" name="Sea Sick" desc="Enables Sea Sick."/>
 		<number id="seasickMult" name="Multiplier" desc="Multiplier for sea sick" min="0.25" max="3" change="0.25"/>
 	</menu>
+	<menu name="Trampoline" desc="Options for the Trampoline modifier! If checked, the hud will start bouncing!">
+		<checkbox id="trampoline" name="Trampoline" desc="Enables Trampoline."/>
+		<number id="trampolineMult" name="Multiplier" desc="Multiplier for trampoline." min="0.25" max="3" change="0.25"/>
+	</menu>
 	<checkbox id="poison" name="Poison" desc="Enables the poison modifier. Once you miss, you get poisoned for the rest of the song. Missing more will make the poison worse."/>
 	<checkbox id="invisNotes" name="Invisible Player Notes" desc="If checked, the player's notes will be invisible. Better use your memory for this one!"/>
 	<checkbox id="noMiss" name="Instant Death on Miss" desc="If checked, missing a note will instantly kill you."/>
