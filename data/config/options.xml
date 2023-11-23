@@ -6,7 +6,7 @@
 	</menu>
 	<menu name="Health Drain" desc="Options for the Health Drain modifier! Health will get drained down as time goes on.">
 		<checkbox id="healthDrain" name="Health Drain" desc="Enables health drain. Your health will drain down overtime"/>
-		<number id="healthDrainMult" name="Multiplier" desc="Multiplier for the health drain" min="0.25" max="3" change="0.25"/>
+		<number id="healthDrainMult" name="Multiplier" desc="Multiplier for the health drain" min="0" max="3" change="0.25"/>
 	</menu>
 	<menu name="Earthquake" desc="Options for the Earthquake modifier! It will shake your screen endlessly">
 		<checkbox id="earthquake" name="Earthquake" desc="Enables Earthquake."/>
@@ -18,6 +18,7 @@
 	</menu>
 	<checkbox id="poison" name="Poison" desc="Enables the poison modifier. Once you miss, you get poisoned for the rest of the song. Missing more will make the poison worse."/>
 	<checkbox id="noMiss" name="Instant Death on Miss" desc="If checked, missing a note will instantly kill you."/>
+	<checkbox id="sicksOnly" name="Sicks Only" desc="If checked, having any rating other than sicks will instantly kill you. Better be careful on hitting your notes!"/>
 	<checkbox id="practice" name="Practice Mode" desc="If checked, you cannot die no matter what."/>
 	<checkbox id="botplay" name="Botplay" desc="If checked, a cpu will play the game for you!"/>
 </menu>

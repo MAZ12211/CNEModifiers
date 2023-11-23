@@ -3,7 +3,6 @@
    If you wish to add this to your mod, you have full permission to do so as long as you credit me.
 */ 
 
-
 import flixel.text.FlxTextBorderStyle;
 import flixel.util.FlxColor;
 
@@ -36,7 +35,7 @@ function update(elapsed){
     playbackRateTxt.text = "Playback Rate: " + FlxG.save.data.playbackRate;
     if (FlxG.save.data.botplay) player.cpu = true;
 
-    if (FlxG.save.data.noMiss && misses > 0) health -= 2;
+    if (FlxG.save.data.noMiss && misses > 0) health = -0.1;
 
     if (FlxG.save.data.earthquake){
         camGame.shake(0.0025 * FlxG.save.data.earthquakeMult, inst.length, null, true);
@@ -65,7 +64,7 @@ function update(elapsed){
 function postCreate(){
     inst.pitch = FlxG.save.data.playbackRate;
     vocals.pitch = FlxG.save.data.playbackRate;
-    
+
     if (FlxG.save.data.practice) canDie = canDadDie = false;
 
     if (FlxG.save.data.enableSS) scrollSpeed = FlxG.save.data.customScrollSpeed;
@@ -90,6 +89,11 @@ function postUpdate(){
             {health += 0.00025 * poisonAmount;}
         }
     }
+}
+
+// thanks srt
+function onPlayerHit(event) {
+    if (FlxG.save.data.sicksOnly && event.accuracy != null && event.accuracy != 1) health = -0.1;
 }
 
 function onPlayerMiss(){
