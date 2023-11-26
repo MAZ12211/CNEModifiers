@@ -22,7 +22,7 @@ function create(){
     botplayTxt.cameras = [camHUD];
     if (FlxG.save.data.botplay) add(botplayTxt);
 
-    playbackRateTxt = new FunkinText(400, botplayTxt.y - 25, FlxG.width - 800, "Playback Rate: " + FlxG.save.data.playbackRate, 40);
+    playbackRateTxt = new FunkinText(400, botplayTxt.y - 25, FlxG.width - 800, "Playback Rate: ", 40);
     playbackRateTxt.setFormat(Paths.font("vcr.ttf"), 23.5, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     playbackRateTxt.scrollFactor.set();
     playbackRateTxt.borderSize = 1.25;
@@ -34,7 +34,10 @@ function create(){
 function update(elapsed){
     playbackRateTxt.text = "Playback Rate: " + FlxG.save.data.playbackRate;
 
-    if (FlxG.save.data.botplay) player.cpu = true;
+    if (FlxG.save.data.botplay){
+		player.cpu = true;
+		cpu.cpu = true;
+	}
 
     if (FlxG.save.data.noMiss && misses > 0) health = -0.1;
 
@@ -42,8 +45,6 @@ function update(elapsed){
         if (!PlayState.opponentMode) playerStrums.notes.forEachAlive(function(notes) notes.alpha = 0);
         else if (PlayState.opponentMode) cpuStrums.notes.forEachAlive(function(notes) notes.alpha = 0);
     }
-
-    if (PlayState.coopMode) FlxG.save.data.invisNotes = false;
 
     if (FlxG.save.data.earthquake){
         camGame.shake(0.0025 * FlxG.save.data.earthquakeMult, inst.length, null, true);
@@ -80,11 +81,26 @@ function update(elapsed){
             }
         }
     }
+
+	// modifiers that doesn't support coop mode
+	if (PlayState.coopMode){
+		FlxG.save.data.invisNotes = false;
+		FlxG.save.data.enableStartingHealth = false;
+		FlxG.save.data.poison = false;
+		FlxG.save.data.healthDrain = false;
+		FlxG.save.data.sicksOnly = false;
+		FlxG.save.data.noMiss = false;
+	}
 }
 
 function postCreate(){
     inst.pitch = FlxG.save.data.playbackRate;
     vocals.pitch = FlxG.save.data.playbackRate;
+
+	if (FlxG.save.data.mirrorCam){
+		camGame.flashSprite.scaleX = -1;
+		camHUD.flashSprite.scaleX = -1;
+	}
 
     if (FlxG.save.data.practice) canDie = canDadDie = false;
 
@@ -112,9 +128,8 @@ function postUpdate(){
     }
 }
 
-// thanks srt
-function onPlayerHit(event) {
-    if (FlxG.save.data.sicksOnly && event.accuracy != null && event.accuracy != 1) health = -0.1;
+function onPlayerHit(event){
+    if (FlxG.save.data.sicksOnly && event.accuracy != null && event.accuracy != 1) health = -0.1; // thanks srt
 }
 
 function onPlayerMiss(){
