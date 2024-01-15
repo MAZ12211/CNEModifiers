@@ -6,5 +6,5 @@ function new() {
 }
 
 function onDestroy() {
-    if (FlxG.save.data.playbackRate > 1) FlxG.save.data.playbackRate = 1;
+    if (FlxG.save.data.playbackRate >= 1 /*Just to force it*/) FlxG.save.data.playbackRate = 1;
 }

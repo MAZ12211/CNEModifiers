@@ -32,16 +32,16 @@ function postCreate(){
         add(playbackRateTxt);
     }
 
-    if (FlxG.save.data.botplay) {
-		player.cpu = true;
-		cpu.cpu = true;
-	}
-
     if (FlxG.save.data.practice) canDie = canDadDie = false;
 }
 
 function postUpdate() {
     inst.pitch = vocals.pitch = FlxG.save.data.playbackRate;
+    scrollSpeed = scrollSpeed;
+    if (FlxG.save.data.botplay) {
+		player.cpu = true;
+		cpu.cpu = true;
+	}
 }
 
 function onSongStart() {
@@ -51,10 +51,8 @@ function onSongStart() {
     }
 }
 
-function onSongEnd() {
-    FlxG.save.data.playbackRate = 1;
-}
+function onSongEnd()
+    FlxG.save.data.playbackRate = 1; // To prevent song freezing even though it can still happen, I truly don't know why.
 
-// function destroy() {
-//     FlxG.timeScale = FlxG.save.data.playbackRate = 1;
-// }
+function destroy()
+    FlxG.save.data.playbackRate = 1; // So it doesn't break scripts + more safer to change it every restart instead of saving your change
