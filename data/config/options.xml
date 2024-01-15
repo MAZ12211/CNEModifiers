@@ -1,46 +1,13 @@
 <!DOCTYPE codename-mod-options>
+<!--
+	List of options/modifiers if you got overwhelmed here:
+	- Practice Mode
+	- Botplay
+	- Playback Rate
+-->
+
 <menu name="Modifiers" desc="Modifiers to spice up the game!">
-	<menu name="Easy Modifiers" desc="Modifiers that can help you out!">
-		<menu name="Cheats" desc="Cheese the game!">
-			<checkbox id="practice" name="Practice Mode" desc="If checked, you cannot die no matter what."/>
-			<checkbox id="botplay" name="Botplay" desc="If checked, a cpu will play the game for you! Note: If playing coop mode, this modifier will automatically be set off!"/>
-		</menu>
-	</menu>
-	<menu name="Neutral Modifers" desc="Modifers that can either help you or make the game harder depending on how you're setting them.">
-		<menu name="Scroll Speed" desc="Options for the Scroll Speed modifier!">
-			<checkbox id="enableSS" name="Custom Scroll Speed" desc="Enables Custom Scroll Speed."/>
-			<number id="customScrollSpeed" name="Set Scroll Speed" desc="Set the scroll speed!" min="0.5" max="5" change="0.25"/>
-		</menu>
-		<menu name="Playback Rate" desc="Options for the Playback Rate modifier! The higher the number, the faster the song will go.">
-			<number id="playbackRate" name="Playback Rate" desc="Change the playback rate! The higher, the faster the song will go by." min="0.25" max="3" change="0.25"/>
-			<checkbox id="midsongPlaybackRate" name="Change Midsong" desc="If checked, the playback rate will be changeable mid song by using the keys Q and E."/>
-		</menu>
-		<menu name="Health Gain" desc="Options for the Health Gain modifier! Multiplies your amount of health gain.">
-			<checkbox id="healthGain" name="Health Gain" desc="Enables the Health Gain Multiplier."/>
-			<number id="healthGainMult" name="Multiplier" desc="Multiplies your health gain amount." min="0" max="3" change="0.25"/>
-		</menu>
-	</menu>
-	<menu name="Challenging Modifers" desc="Modifers that makes the game harder!">
-		<menu name="Health Drain" desc="Options for the Health Drain modifier! Health will get drained down as time goes on. Note: If playing coop mode, this modifier will automatically be set off!">
-			<checkbox id="healthDrain" name="Health Drain" desc="Enables health drain."/>
-			<number id="healthDrainMult" name="Multiplier" desc="Multiplier for the health drain" min="0" max="3" change="0.25"/>
-		</menu>
-		<menu name="Earthquake" desc="Options for the Earthquake modifier! It will shake your screen endlessly">
-			<checkbox id="earthquake" name="Earthquake" desc="Enables Earthquake."/>
-			<number id="earthquakeMult" name="Multiplier" desc="Multiplier for the earthquake" min="0.25" max="3" change="0.25"/>
-		</menu>
-		<menu name="Sea Sick" desc="Options for the Sea Sick modifier! Your camera will be swinging very weirdly for the entire song.">
-			<checkbox id="seasick" name="Sea Sick" desc="Enables Sea Sick."/>
-			<number id="seasickMult" name="Multiplier" desc="Multiplier for sea sick" min="0.25" max="3" change="0.25"/>
-		</menu>
-		<menu name="Trampoline" desc="Options for the Trampoline modifier! If checked, the hud will start bouncing!">
-			<checkbox id="trampoline" name="Trampoline" desc="Enables Trampoline."/>
-			<number id="trampolineMult" name="Multiplier" desc="Multiplier for trampoline." min="0.25" max="3" change="0.25"/>
-		</menu>
-		<checkbox id="mirrorCam" name="Mirror Camera" desc="If checked, the camera will be mirrored."/>
-		<checkbox id="poison" name="Poison" desc="Enables the poison modifier. Once you miss, you get poisoned for the rest of the song. Missing more will make the poison worse. Note: If playing coop mode, this modifier will automatically be set off!"/>
-		<checkbox id="invisNotes" name="Invisible Player Notes" desc="If checked, the player's notes will be invisible. Better use your memory for this one! Note: If playing coop mode, this modifier will automatically be set off!"/>
-		<checkbox id="noMiss" name="Instant Death on Miss" desc="If checked, missing a note will instantly kill you. Note: If playing coop mode, this modifier will automatically be set off!"/>
-		<checkbox id="sicksOnly" name="Sicks Only" desc="If checked, having any rating other than sicks will instantly kill you. Better be careful on hitting your notes! Note: If playing coop mode, this modifier will automatically be set off!"/>
-	</menu>
+	<checkbox id="practice" name="Practice Mode" desc="If checked, you won't get a gameover."/>
+	<checkbox id="botplay" name="Botplay" desc="If checked, the game autoplays for you."/>
+	<number id="playbackRate" name="Playback Rate" desc="The higher, the faster the song will go by (affects scroll speed.)" min="1" max="2" change="0.05"/>
 </menu>
