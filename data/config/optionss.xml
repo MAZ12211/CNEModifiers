@@ -1,0 +1,13 @@
+<!DOCTYPE codename-mod-options>
+<!--
+	List of options/modifiers if you got overwhelmed here:
+	- Practice Mode
+	- Botplay
+	- Playback Rate
+-->
+
+<menu name="Modifiers" desc="Modifiers to spice up the game!">
+	<checkbox id="practice" name="Practice Mode" desc="If checked, you won't get a gameover."/>
+	<checkbox id="botplay" name="Botplay" desc="If checked, the game autoplays for you."/>
+	<number id="playbackRate" name="Playback Rate" desc="The higher, the faster the song will go by (affects scroll speed.)" min="1" max="2" change="0.05"/>
+</menu>
