@@ -1,9 +1,17 @@
 <!DOCTYPE codename-mod-options>
 <!--
-	List of options/modifiers if you got overwhelmed here:
-	- Practice Mode
-	- Botplay
-	- Playback Rate
+	I didn't like changing these options through options instead of a more convinent way (freeplay)
+	thus why this file is intentionally misnamed
+	The About section of this forked repo says "Will visit this later", but I didn't realize how longer "later" would take
+	and considering that the main modifiers repo is gone for some reason, I decided to fix this up (+ I want to play some songs with higher speed lmao)
+
+	I may have a few ideas for this, but honestly,
+	considering that V Slice is objectivly a better way to play
+	the game in my opinion (Input isn't too strict like Kade but it isn't toddler level like Psych or CNE. It simply feels way better to play and official),
+	I can't say I'll maintain this repo anymore.
+
+	That said there's still mods that use this engine for example Grieving Day In Funkin that released almost a week ago.
+	So take what I said about implementing ideas with a grain of salt.
 -->
 
 <menu name="Modifiers" desc="Modifiers to spice up the game!">

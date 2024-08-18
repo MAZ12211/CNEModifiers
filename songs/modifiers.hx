@@ -11,15 +11,15 @@
 var botplayTxt, playbackRateTxt:FunkinText;
 
 function postCreate(){
-    if (FlxG.save.data.botplay) {
-        botplayTxt = new FunkinText(400, 83, FlxG.width - 800, "Botplay", 40);
-        botplayTxt.scrollFactor.set();
-        botplayTxt.alignment = "center";
-        botplayTxt.borderSize = 2;
-        botplayTxt.alpha = 0;
-        botplayTxt.cameras = [camHUD];
-        add(botplayTxt);
-    }
+    botplayTxt = new FunkinText(400, 83, FlxG.width - 800, "Botplay", 40);
+    botplayTxt.scrollFactor.set();
+    botplayTxt.alignment = "center";
+    botplayTxt.borderSize = 2;
+    botplayTxt.cameras = [camHUD];
+    add(botplayTxt);
+    FlxTween.tween(botplayTxt, {y: 115}, 1, {ease: FlxEase.sineInOut, type: 4}); // type 4 means looping
+    FlxTween.tween(botplayTxt, {alpha: 1}, 1);
+    botplayTxt.alpha = 0;
 
     playbackRateTxt = new FunkinText(Std.int(healthBarBG.width / 1.75), healthBarBG.y - 100, 600, "Playback Rate: " + FlxG.save.data.playbackRate +"x", 23.5);
     playbackRateTxt.scrollFactor.set();
@@ -28,8 +28,6 @@ function postCreate(){
     playbackRateTxt.alpha = 1;
     playbackRateTxt.cameras = [camHUD];
     add(playbackRateTxt);
-
-    if (FlxG.save.data.practice) canDie = canDadDie = false;
 }
 
 function postUpdate() {
@@ -38,14 +36,12 @@ function postUpdate() {
     if (FlxG.save.data.botplay) {
 		player.cpu = true;
 		cpu.cpu = true;
-	}
-}
-
-function onSongStart() {
-    if (FlxG.save.data.botplay) {
-        FlxTween.tween(botplayTxt, {y: 115}, 1, {ease: FlxEase.sineInOut, type: 4}); // type 4 means looping
-        FlxTween.tween(botplayTxt, {alpha: 1}, 1);
+        botplayTxt.alpha = 1;
+    } else {
+        player.cpu = false;
+        botplayTxt.alpha = 0;
     }
+    if (FlxG.save.data.practice) canDie = canDadDie = false;
 }
 
 function onPostCountdown(e) {
@@ -55,5 +51,5 @@ function onPostCountdown(e) {
 function onSongEnd()
     FlxG.save.data.playbackRate = 1; // To prevent song freezing even though it can still happen, I truly don't know why.
 
-function destroy()
-    FlxG.save.data.playbackRate = 1; // So it doesn't break scripts + more safer to change it every restart instead of saving your change
+// function destroy()
+//     FlxG.save.data.playbackRate = 1;
