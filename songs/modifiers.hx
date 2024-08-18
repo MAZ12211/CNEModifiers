@@ -31,7 +31,18 @@ function postCreate(){
 }
 
 function postUpdate() {
-    inst.pitch = vocals.pitch = FlxG.save.data.playbackRate;
+    FlxG.save.data.playbackRate = Math.round(FlxG.save.data.playbackRate * 100) / 100;
+    if (FlxG.keys.justPressed.E && FlxG.save.data.playbackRate < 2) {
+        inst.pitch += 0.05;
+        vocals.pitch += 0.05;
+        FlxG.save.data.playbackRate += 0.05;
+    }
+    if (FlxG.keys.justPressed.Q && FlxG.save.data.playbackRate > 0.5) {
+        inst.pitch -= 0.05;
+        vocals.pitch -= 0.05;
+        FlxG.save.data.playbackRate -= 0.05;
+    }
+    playbackRateTxt.text = "Playback Rate: " + FlxG.save.data.playbackRate +"x";
     scrollSpeed = scrollSpeed;
     if (FlxG.save.data.botplay) {
 		player.cpu = true;
