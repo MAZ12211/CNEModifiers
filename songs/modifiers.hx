@@ -34,18 +34,19 @@ function postUpdate() {
     inst.pitch = vocals.pitch = FlxG.save.data.playbackRate;
     scrollSpeed = scrollSpeed;
     if (FlxG.save.data.botplay) {
-		player.cpu = true;
-		cpu.cpu = true;
+		if (!PlayState.opponentMode) player.cpu = true;
+        else PlayState.opponentMode = true;
         botplayTxt.alpha = 1;
     } else {
-        player.cpu = false;
+        if (!PlayState.opponentMode) player.cpu = false;
+        else PlayState.opponentMode = false;
         botplayTxt.alpha = 0;
     }
     if (FlxG.save.data.practice) canDie = canDadDie = false;
 }
 
 function onPostCountdown(e) {
-    e.sound.pitch = FlxG.save.data.playbackRate;
+    if (e.sound != null) e.sound.pitch = FlxG.save.data.playbackRate;
 }
 
 function onSongEnd()
