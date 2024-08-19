@@ -30,17 +30,17 @@ function postCreate(){
     add(playbackRateTxt);
 }
 
-function postUpdate() {
+function postUpdate(elapsed) {
     FlxG.save.data.playbackRate = Math.round(FlxG.save.data.playbackRate * 100) / 100;
     if (FlxG.keys.justPressed.E && FlxG.save.data.playbackRate < 2) {
-        inst.pitch += 0.05;
-        vocals.pitch += 0.05;
         FlxG.save.data.playbackRate += 0.05;
+        inst.pitch = FlxG.save.data.playbackRate;
+        vocals.pitch = FlxG.save.data.playbackRate;
     }
     if (FlxG.keys.justPressed.Q && FlxG.save.data.playbackRate > 0.5) {
-        inst.pitch -= 0.05;
-        vocals.pitch -= 0.05;
         FlxG.save.data.playbackRate -= 0.05;
+        inst.pitch = FlxG.save.data.playbackRate;
+        vocals.pitch = FlxG.save.data.playbackRate;
     }
     playbackRateTxt.text = "Playback Rate: " + FlxG.save.data.playbackRate +"x";
     scrollSpeed = scrollSpeed;
